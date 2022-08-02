@@ -1,12 +1,11 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { Text } from "react-native";
 import { theme } from "../global/theme";
 import { Favorites } from "../screens/Favorites";
 import { ListPokemons } from "../screens/ListPokemons";
-
+import { NavigationScreenProps } from "../@types/routes";
 const { Navigator, Screen } = createDrawerNavigator();
 
-export function AppDrawer() {
+export function AppDrawer({}: NavigationScreenProps) {
   return (
     <Navigator
       screenOptions={{

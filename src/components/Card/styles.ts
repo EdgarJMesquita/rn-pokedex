@@ -29,6 +29,8 @@ export const Title = styled.Text`
 export const PokePhotoContainer = styled.View`
   width: 50px;
   height: 50px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const PokePhoto = styled(Image)`

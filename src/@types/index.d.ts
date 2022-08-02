@@ -3,11 +3,11 @@ type Result = {
   url: string;
 };
 
-type ListPagination = {
+type ListPagination<T> = {
   count: number;
   next: string | null;
   previous: string | null;
-  results: Result[];
+  results: T[];
 };
 
 type Pokemon = {
@@ -318,3 +318,5 @@ type Pokemon = {
   ];
   weight: number;
 };
+
+type GetKey<T> = (pageIndex: number, previousPage: T | null) => string | null;

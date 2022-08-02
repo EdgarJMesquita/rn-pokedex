@@ -30,15 +30,17 @@ export function Card({ result, isFavorite, onFavoritePress, ...props }: Props) {
   return (
     <Button {...props}>
       <Section>
-        {data?.sprites.front_default && (
-          <PokePhotoContainer>
+        <PokePhotoContainer>
+          {data?.sprites.front_default && (
             <PokePhoto
               source={{ uri: data.sprites.front_default }}
               resizeMode="contain"
             />
-          </PokePhotoContainer>
-        )}
-        {!data && <ActivityIndicator size={10} color={theme.colors.primary} />}
+          )}
+          {!data && (
+            <ActivityIndicator size={10} color={theme.colors.primary} />
+          )}
+        </PokePhotoContainer>
 
         <Title>{result.name}</Title>
       </Section>
