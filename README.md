@@ -1,4 +1,4 @@
-# Teste MobileIonic ou ReactItens
+# Teste Mobile Ionic ou React Native
 
 1. Exibir uma lista com todos os pokemons.
 
