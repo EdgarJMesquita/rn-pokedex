@@ -37,8 +37,8 @@ export function PokemonDetails({ navigation, route }: PokemonDetailsProps) {
         <PokemonName>{pokemon.name}</PokemonName>
 
         <PokemonTypesSection>
-          {pokemon.types.map((type) => (
-            <PokemonType>{type.type.name}</PokemonType>
+          {pokemon.types.map((type, index) => (
+            <PokemonType key={index}>{type.type.name}</PokemonType>
           ))}
         </PokemonTypesSection>
 
@@ -54,13 +54,17 @@ export function PokemonDetails({ navigation, route }: PokemonDetailsProps) {
         </PhysicalSection>
 
         <StatusTitle>Status</StatusTitle>
-        {pokemon.stats.map((stat) => (
-          <PokemonStatus label={stat.stat.name} value={stat.base_stat} />
+        {pokemon.stats.map((stat, index) => (
+          <PokemonStatus
+            key={index}
+            label={stat.stat.name}
+            value={stat.base_stat}
+          />
         ))}
 
         <MovementsTitle>Movimentos</MovementsTitle>
-        {pokemon.moves.map((type) => (
-          <Movement>{type.move.name.split("-").join(" ")}</Movement>
+        {pokemon.moves.map((type, index) => (
+          <Movement key={index}>{type.move.name.split("-").join(" ")}</Movement>
         ))}
       </ScrollView>
     </Container>

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "rn-pokedex",
+    "name": "Pokedex",
     "slug": "rn-pokedex",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,14 +9,12 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ef5350"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
