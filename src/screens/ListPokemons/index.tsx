@@ -1,27 +1,26 @@
 import React from "react";
-import { FlatList, View } from "react-native";
-import useSWR from "swr";
+import { FlatList } from "react-native";
+import { NavigationScreenProps } from "../../@types/routes";
 import { Card } from "../../components/Card";
 import { DiglettLoading } from "../../components/DiglettLoading";
 import { EmptyMessage } from "../../components/EmptyMessage";
 import { ListFootComponent } from "../../components/ListFootComponent";
-import { PokeBallLoading } from "../../components/PokeBallLoading";
+import { PageTitle } from "../../components/PageTitle";
 import { useFavorites } from "../../context/FavoriteContext";
 import { useInfiniteScroll } from "../../hooks/useInfiniteScroll";
-import { fetcher } from "../../services/api";
 import { Container, styles } from "./styles";
 
-export function ListPokemons() {
+export function ListPokemons({ navigation }: NavigationScreenProps) {
   const { favorites, handleFavoritePress } = useFavorites();
   const {
     data: pokemons,
     nextPage,
     isLoading,
   } = useInfiniteScroll<Result>("pokemon");
-  //const { data } = useSWR<ListPagination>("pokemon", fetcher);
 
   return (
     <Container>
+      <PageTitle>Pokemons</PageTitle>
       {!!pokemons && (
         <FlatList
           data={pokemons}
@@ -35,6 +34,7 @@ export function ListPokemons() {
                 !!favorites.find((result) => result.name === item.name)
               }
               onFavoritePress={() => handleFavoritePress(item)}
+              navigation={navigation}
             />
           )}
           onEndReachedThreshold={0.1}

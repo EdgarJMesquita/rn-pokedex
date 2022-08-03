@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { ActivityIndicator } from "react-native";
 import {
   BorderlessButton,
   RectButtonProps,
 } from "react-native-gesture-handler";
 import useSWR from "swr";
+import { NavigationScreenProps } from "../../@types/routes";
 import { theme } from "../../global/theme";
 import { fetcher } from "../../services/api";
 import {
@@ -20,15 +20,27 @@ type Props = RectButtonProps & {
   result: Result;
   isFavorite: boolean;
   onFavoritePress: () => void;
+  navigation: NavigationScreenProps["navigation"];
 };
 
-export function Card({ result, isFavorite, onFavoritePress, ...props }: Props) {
+export function Card({
+  result,
+  isFavorite,
+  onFavoritePress,
+  navigation,
+  ...props
+}: Props) {
   const { data } = useSWR<Pokemon>("pokemon/" + result.name, fetcher);
 
   const iconName = isFavorite ? "favorite" : "favorite-border";
 
+  function handleGoToPokemonDetails() {
+    if (!data) return;
+    navigation.navigate("PokemonDetails", { pokemon: data });
+  }
+
   return (
-    <Button {...props}>
+    <Button onPress={() => handleGoToPokemonDetails()} {...props}>
       <Section>
         <PokePhotoContainer>
           {data?.sprites.front_default && (

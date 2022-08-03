@@ -7,12 +7,7 @@ type Props = {
 };
 
 export function ListFootComponent({ isLoading, onPress }: Props) {
-  if (!isLoading)
-    return (
-      <Button onPress={onPress}>
-        <Title>Mais</Title>
-      </Button>
-    );
+  if (!isLoading) return <Container />;
 
   return (
     <Container>
